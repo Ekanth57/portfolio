@@ -343,7 +343,7 @@ class HomeSection extends StatelessWidget {
                   context,
                   FontAwesomeIcons.github,
                   'https://github.com/Ekanth57',
-                  const Color(0xFF333333),
+                  const Color(0xFF6CC644),
                   isSmallScreen,
                 ),
               ],
@@ -362,17 +362,27 @@ class HomeSection extends StatelessWidget {
     Color color,
     bool isSmallScreen,
   ) {
-    return GestureDetector(
-      onTap: () => _launchUrl(url),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: EdgeInsets.all(isSmallScreen ? 10 : 15),
-        decoration: BoxDecoration(
-          color: color.withOpacity(0.1),
-          borderRadius: BorderRadius.circular(isSmallScreen ? 12 : 15),
-          border: Border.all(color: color.withOpacity(0.3)),
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () => _launchUrl(url),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
+          decoration: BoxDecoration(
+            color: color.withOpacity(0.15),
+            borderRadius: BorderRadius.circular(isSmallScreen ? 12 : 15),
+            border: Border.all(color: color.withOpacity(0.4), width: 2),
+            boxShadow: [
+              BoxShadow(
+                color: color.withOpacity(0.2),
+                blurRadius: 8,
+                offset: const Offset(0, 3),
+              ),
+            ],
+          ),
+          child: FaIcon(icon, color: color, size: isSmallScreen ? 20 : 26),
         ),
-        child: FaIcon(icon, color: color, size: isSmallScreen ? 18 : 24),
       ),
     );
   }
@@ -395,9 +405,9 @@ class ProjectsSection extends StatelessWidget {
     final isSmallScreen = MediaQuery.of(context).size.width < 600;
     final projects = [
       Project(
-        title: 'Japanese Restaurant Management System',
+        title: 'Miyako Restaurant Management System',
         summary:
-            'Flutter web application for restaurant operations (Freelancing)',
+            'Flutter web application for Miyako restaurant operations (Freelancing)',
         description:
             'Developed a comprehensive restaurant management system for a Japanese restaurant as a freelancing project. The application streamlines restaurant operations with table booking management, real-time notifications, and automated communication systems. Features include customer booking interface, admin dashboard for restaurant owners, FCM push notifications to mobile devices, automated email triggers for booking confirmations and updates. Built with Flutter for cross-platform compatibility and integrated with Firebase for real-time data synchronization and reliable backend services.',
         tech: [
@@ -424,15 +434,15 @@ class ProjectsSection extends StatelessWidget {
           'assets/images/web-project-7.png',
           'assets/images/web-project-8.png',
         ],
-        logoPath: 'assets/images/logo-web-project.png',
+        logoPath: 'assets/images/miyako.png',
         color: const Color(0xFF9C27B0),
         websiteUrl: 'https://web-project-46bb2.firebaseapp.com',
       ),
       Project(
-        title: 'Restaurant Manager Mobile App',
-        summary: 'Mobile app for restaurant owner to manage bookings.',
+        title: 'Miyako Restaurant Manager Mobile App',
+        summary: 'Mobile app for Miyako restaurant owner to manage bookings.',
         description:
-            'Developed a companion mobile application specifically for the Japanese restaurant owner to efficiently manage table bookings and customer interactions. This native mobile app provides real-time booking management, push notifications for new reservations, customer communication tools, and comprehensive analytics dashboard. Features include booking status updates, customer details management, table availability control, and direct communication with customers through in-app messaging. Seamlessly integrates with the web-based restaurant management system for unified operations.',
+            'Developed a companion mobile application specifically for Miyako Japanese restaurant owner to efficiently manage table bookings and customer interactions. This native mobile app provides real-time booking management, push notifications for new reservations, customer communication tools, and comprehensive analytics dashboard. Features include booking status updates, customer details management, table availability control, and direct communication with customers through in-app messaging. Seamlessly integrates with the Miyako web-based restaurant management system for unified operations.',
         tech: [
           'Flutter',
           'Dart',
@@ -456,7 +466,7 @@ class ProjectsSection extends StatelessWidget {
           'assets/images/mobile-project-6.jpeg',
           'assets/images/mobile-project-7.jpeg',
         ],
-        logoPath: 'assets/images/logo-web-project.png',
+        logoPath: 'assets/images/miyako.png',
         color: const Color(0xFFFF5722),
         websiteUrl: null,
       ),
@@ -1202,7 +1212,7 @@ class ContactSection extends StatelessWidget {
         title: 'GitHub',
         subtitle: 'View my code',
         url: 'https://github.com/Ekanth57',
-        color: const Color(0xFF333333),
+        color: const Color(0xFF6CC644),
       ),
     ];
 
