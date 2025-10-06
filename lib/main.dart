@@ -137,10 +137,9 @@ class _PortfolioPageState extends State<PortfolioPage> {
           ),
         ),
       ),
-      floatingActionButton:
-          MediaQuery.of(context).size.width > 400
-              ? _buildNavigationFAB()
-              : null,
+      floatingActionButton: MediaQuery.of(context).size.width > 400
+          ? _buildNavigationFAB()
+          : null,
     );
   }
 
@@ -180,10 +179,9 @@ class HomeSection extends StatelessWidget {
     final isSmallScreen = MediaQuery.of(context).size.width < 600;
     return Container(
       constraints: BoxConstraints(
-        minHeight:
-            isSmallScreen
-                ? MediaQuery.of(context).size.height * 0.9
-                : MediaQuery.of(context).size.height,
+        minHeight: isSmallScreen
+            ? MediaQuery.of(context).size.height * 0.9
+            : MediaQuery.of(context).size.height,
       ),
       padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
       alignment: Alignment.center,
@@ -300,18 +298,16 @@ class HomeSection extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
-                  child: SingleChildScrollView(
-                    child: Text(
-                      'Software Engineer with 3+ years of experience in cross-platform development using Flutter, Kotlin, and Swift. Skilled in CI/CD, scalable cloud integration (Firebase, GCP), and performance optimization across iOS and Android. Strong focus on clean architecture, testing, and building platform-level tools.',
-                      style: GoogleFonts.poppins(
-                        fontSize: isSmallScreen ? 13 : 16,
-                        height: isSmallScreen ? 1.4 : 1.5,
-                        color: Theme.of(context).colorScheme.onSurface,
-                      ),
-                      textAlign: TextAlign.center,
-                      maxLines: isSmallScreen ? 5 : null,
-                      overflow: isSmallScreen ? TextOverflow.fade : null,
+                  child: Text(
+                    'Software Engineer with 3+ years of experience in cross-platform development using Flutter, Kotlin, and Swift. Skilled in CI/CD, scalable cloud integration (Firebase, GCP), and performance optimization across iOS and Android. Strong focus on clean architecture, testing, and building platform-level tools.',
+                    style: GoogleFonts.poppins(
+                      fontSize: isSmallScreen ? 13 : 16,
+                      height: isSmallScreen ? 1.4 : 1.5,
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
+                    textAlign: TextAlign.center,
+                    maxLines: isSmallScreen ? 5 : null,
+                    overflow: isSmallScreen ? TextOverflow.fade : null,
                   ),
                 ),
               ),
@@ -722,9 +718,10 @@ class _ModernProjectCardState extends State<ModernProjectCard>
                   widget.project.color.withOpacity(0.1),
                 ],
               ),
-              child: SingleChildScrollView(
+              child: Padding(
                 padding: EdgeInsets.all(isSmallScreen ? 16 : 25),
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
@@ -921,19 +918,18 @@ class _ModernProjectCardState extends State<ModernProjectCard>
                     Wrap(
                       spacing: isSmallScreen ? 6 : 8,
                       runSpacing: isSmallScreen ? 6 : 8,
-                      children:
-                          widget.project.tech
-                              .map(
-                                (tech) => _buildTechChip(tech, isSmallScreen),
-                              )
-                              .toList(),
+                      children: widget.project.tech
+                          .map(
+                            (tech) => _buildTechChip(tech, isSmallScreen),
+                          )
+                          .toList(),
                     ),
                     if (widget.project.websiteUrl != null) ...[
                       const SizedBox(height: 20),
                       Center(
                         child: ElevatedButton.icon(
-                          onPressed:
-                              () => _launchUrl(widget.project.websiteUrl!),
+                          onPressed: () =>
+                              _launchUrl(widget.project.websiteUrl!),
                           icon: const FaIcon(FontAwesomeIcons.globe, size: 16),
                           label: Text(
                             'Visit Website',
@@ -1009,28 +1005,32 @@ class SkillsSection extends StatelessWidget {
   const SkillsSection({super.key});
 
   Map<String, SkillData> get skills => {
-    'Flutter': SkillData(
-      0.95,
-      FontAwesomeIcons.mobile,
-      const Color(0xFF02569B),
-    ),
-    'Dart': SkillData(0.90, FontAwesomeIcons.code, const Color(0xFF0175C2)),
-    'Firebase': SkillData(0.85, FontAwesomeIcons.fire, const Color(0xFFFFCA28)),
-    'Google Cloud': SkillData(
-      0.80,
-      FontAwesomeIcons.cloud,
-      const Color(0xFF4285F4),
-    ),
-    'Kotlin': SkillData(
-      0.85,
-      FontAwesomeIcons.android,
-      const Color(0xFF7F52FF),
-    ),
-    'Swift': SkillData(0.75, FontAwesomeIcons.apple, const Color(0xFFFA7343)),
-    'AWS': SkillData(0.70, FontAwesomeIcons.aws, const Color(0xFFFF9900)),
-    'Python': SkillData(0.80, FontAwesomeIcons.python, const Color(0xFF3776AB)),
-    'CI/CD': SkillData(0.85, FontAwesomeIcons.github, const Color(0xFF181717)),
-  };
+        'Flutter': SkillData(
+          0.95,
+          FontAwesomeIcons.mobile,
+          const Color(0xFF02569B),
+        ),
+        'Dart': SkillData(0.90, FontAwesomeIcons.code, const Color(0xFF0175C2)),
+        'Firebase':
+            SkillData(0.85, FontAwesomeIcons.fire, const Color(0xFFFFCA28)),
+        'Google Cloud': SkillData(
+          0.80,
+          FontAwesomeIcons.cloud,
+          const Color(0xFF4285F4),
+        ),
+        'Kotlin': SkillData(
+          0.85,
+          FontAwesomeIcons.android,
+          const Color(0xFF7F52FF),
+        ),
+        'Swift':
+            SkillData(0.75, FontAwesomeIcons.apple, const Color(0xFFFA7343)),
+        'AWS': SkillData(0.70, FontAwesomeIcons.aws, const Color(0xFFFF9900)),
+        'Python':
+            SkillData(0.80, FontAwesomeIcons.python, const Color(0xFF3776AB)),
+        'CI/CD':
+            SkillData(0.85, FontAwesomeIcons.github, const Color(0xFF181717)),
+      };
 
   @override
   Widget build(BuildContext context) {
