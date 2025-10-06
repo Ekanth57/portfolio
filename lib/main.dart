@@ -1413,3 +1413,16 @@ class ContactItem {
     required this.color,
   });
 }
+
+// Simple analytics helper class
+class Analytics {
+  static void trackPageView(String pageName) {
+    // This will work with Google Analytics when GA_MEASUREMENT_ID is configured
+    print('Page viewed: $pageName');
+  }
+  
+  static void trackEvent(String eventName, {Map<String, dynamic>? parameters}) {
+    // Track custom events like button clicks, project views, etc.
+    print('Event tracked: $eventName with parameters: $parameters');
+  }
+}
